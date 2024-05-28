@@ -726,10 +726,10 @@ export class PeFileParser {
         const fixedFileInfoStruct = VS_FIXED_FILE_INFO();
         fixedFileInfoStruct.dwSignature = buff.readBytes(DataSize.DWORD, true);
         fixedFileInfoStruct.dwStrucVersion = buff.readWords(DataSize.DWORD / DataSize.WORD);
-        fixedFileInfoStruct.dwFileVersionLS = buff.readDWord();
         fixedFileInfoStruct.dwFileVersionMS = buff.readDWord();
-        fixedFileInfoStruct.dwProductVersionLS = buff.readDWord();
+        fixedFileInfoStruct.dwFileVersionLS = buff.readDWord();
         fixedFileInfoStruct.dwProductVersionMS = buff.readDWord();
+        fixedFileInfoStruct.dwProductVersionLS = buff.readDWord();
         fixedFileInfoStruct.dwFileFlagsMask = buff.readDWord();
         fixedFileInfoStruct.dwFileFlags = buff.readDWord();
         fixedFileInfoStruct.dwFileOS = buff.readDWord();
