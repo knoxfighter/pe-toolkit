@@ -726,20 +726,17 @@ export class PeFileParser {
         const fixedFileInfoStruct = VS_FIXED_FILE_INFO();
         fixedFileInfoStruct.dwSignature = buff.readBytes(DataSize.DWORD, true);
         fixedFileInfoStruct.dwStrucVersion = buff.readWords(DataSize.DWORD / DataSize.WORD);
-        fixedFileInfoStruct.dwFileVersionLS = buff.readWord();
-        fixedFileInfoStruct.dwFileVersionMS = buff.readWord();
-        buff.readDWord();// padding
-        fixedFileInfoStruct.dwProductVersionLS = buff.readWord();
-        fixedFileInfoStruct.dwProductVersionMS = buff.readWord();
-        buff.readDWord(); // padding
+        fixedFileInfoStruct.dwFileVersionLS = buff.readDWord();
+        fixedFileInfoStruct.dwFileVersionMS = buff.readDWord();
+        fixedFileInfoStruct.dwProductVersionLS = buff.readDWord();
+        fixedFileInfoStruct.dwProductVersionMS = buff.readDWord();
         fixedFileInfoStruct.dwFileFlagsMask = buff.readDWord();
         fixedFileInfoStruct.dwFileFlags = buff.readDWord();
         fixedFileInfoStruct.dwFileOS = buff.readDWord();
         fixedFileInfoStruct.dwFileType = buff.readDWord();
         fixedFileInfoStruct.dwFileSubtype = buff.readDWord();
-        fixedFileInfoStruct.dwFileDateLS = buff.readWord();
-        fixedFileInfoStruct.dwFileDateMS = buff.readWord();
-        buff.readDWord(); // padding
+        fixedFileInfoStruct.dwFileDateLS = buff.readDWord();
+        fixedFileInfoStruct.dwFileDateMS = buff.readDWord();
         const fixedFileInfo = new FixedFileInfo(fixedFileInfoStruct);
         vsVersionInfo.setFixedFileInfo(fixedFileInfo);
 
